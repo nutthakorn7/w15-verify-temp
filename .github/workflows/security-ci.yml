@@ -83,6 +83,7 @@ jobs:
           scanners: vuln,secret
           format: sarif
           output: trivy-fs.sarif
+          version: v0.65.0
           exit-code: "0"          # report only; the gate step enforces failure
 
       - name: Upload Trivy fs SARIF
@@ -133,6 +134,7 @@ jobs:
       #   run: docker build -t app:ci .
       # - name: Gate — fail on image CVEs
       #   uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25  # v0.36.0
+        with_debug_version_pin_test: true
       #   with:
       #     scan-type: image
       #     image-ref: app:ci
